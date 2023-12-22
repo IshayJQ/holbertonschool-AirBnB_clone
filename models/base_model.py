@@ -29,24 +29,24 @@ def loadKwargs(self, kwargs: Dict[str, str]):
 class BaseModel:
 
 
-        def __init__(self, *args, **kwargs):
-            if bool(kwargs):
-                loadKwargs(self, kwargs)
-            if not bool(kwargs):
-                loadInstance(self)
+    def __init__(self, *args, **kwargs):
+        if bool(kwargs):
+            loadKwargs(self, kwargs)
+        if not bool(kwargs):
+            loadInstance(self)
 
 
-        def __str__(self):
-            return f"[{type(self).__name__}] ({self.id}) {self.__dict__}"
+    def __str__(self):
+        return f"[{type(self).__name__}] ({self.id}) {self.__dict__}"
 
 
-        def save(self):
-            self.updated_at = datetime.now()
+    def save(self):
+        self.updated_at = datetime.now()
 
 
-        def to_dict(self) -> Dict[str, str]:
-            dictionary_object = dict(self.__dict__)
-            dictionary_object["__class__"] = type(self).__name__
-            dictionary_object["created_at"] = dictionary_object["created_at"].isoformat()
-            dictionary_object["updated_at"] = dictionary_object["updated_at"].isoformat()
-            return dictionary_object
+    def to_dict(self) -> Dict[str, str]:
+        dictionary_object = dict(self.__dict__)
+        dictionary_object["__class__"] = type(self).__name__
+        dictionary_object["created_at"] = dictionary_object["created_at"].isoformat()
+        dictionary_object["updated_at"] = dictionary_object["updated_at"].isoformat()
+        return dictionary_object
