@@ -10,7 +10,6 @@ def loadInstance(self):
     self.updated_at = self.created_at
 
 
-
 def loadKwargs(self, kwargs: Dict[str, str]):
 
     format_time = "%Y-%m-%dT%H:%M:%S.%f"
@@ -26,13 +25,16 @@ def loadKwargs(self, kwargs: Dict[str, str]):
             continue
         setattr(self, key, value)
 
+
 class BaseModel:
+
 
         def __init__(self, *args, **kwargs):
             if bool(kwargs):
                 loadKwargs(self, kwargs)
             if not bool(kwargs):
                 loadInstance(self)
+
 
         def __str__(self):
             return f"[{type(self).__name__}] ({self.id}) {self.__dict__}"
@@ -48,4 +50,3 @@ class BaseModel:
             dictionary_object["created_at"] = dictionary_object["created_at"].isoformat()
             dictionary_object["updated_at"] = dictionary_object["updated_at"].isoformat()
             return dictionary_object
-
