@@ -41,8 +41,8 @@ class BaseModel:
         self.updated_at = datetime.now()
 
     def to_dict(self) -> Dict[str, str]:
-        dictionary_object = dict(self.__dict__)
-        dictionary_object["__class__"] = type(self).__name__
-        dictionary_object["created_at"] = dictionary_object["created_at"].isoformat()
-        dictionary_object["updated_at"] = dictionary_object["updated_at"].isoformat()
-        return dictionary_object
+        dict_obj = dict(self.__dict__)
+        dict_obj["__class__"] = type(self).__name__
+        dict_obj["created_at"] = dict_obj["created_at"].isoformat()
+        dict_obj["updated_at"] = dict_obj["updated_at"].isoformat()
+        return dict_obj
