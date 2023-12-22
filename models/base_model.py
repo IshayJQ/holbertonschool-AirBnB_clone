@@ -9,8 +9,10 @@ def loadInstance(self):
     self.created_at = datetime.now()
     self.updated_at = self.created_at
 
+
+
 def loadKwargs(self, kwargs: Dict[str, str]):
-    
+
     format_time = "%Y-%m-%dT%H:%M:%S.%f"
 
     dates = ("created_at", "updated_at")
