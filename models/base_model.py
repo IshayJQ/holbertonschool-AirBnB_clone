@@ -1,13 +1,14 @@
 from uuid import uuid4
 from datetime import datetime
 from typing import Dict
-
+from models import storage
 
 def loadInstance(self):
 
     self.id = uuid4()
     self.created_at = datetime.now()
     self.updated_at = self.created_at
+    storage.new(self)
 
 
 def loadKwargs(self, kwargs: Dict[str, str]):
@@ -39,6 +40,7 @@ class BaseModel:
 
     def save(self):
         self.updated_at = datetime.now()
+        storage.save(self)
 
     def to_dict(self) -> Dict[str, str]:
         dict_obj = dict(self.__dict__)
