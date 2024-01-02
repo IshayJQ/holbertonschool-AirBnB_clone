@@ -33,7 +33,7 @@ class FileStorage:
             pass
 
         for key, kwargs in load_data.items():
-            class_name = value["__class__"]
+            class_name = kwargs["__class__"]
             self.__objects[key] = eval(class_name)(**kwargs)
 
 
